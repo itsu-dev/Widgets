@@ -1,0 +1,131 @@
+#base-vbox {
+    -fx-background-color: transparent;
+}
+
+#clock-label {
+    -fx-text-fill: white;
+    -fx-font-size: 72pt;
+    -fx-font-family: "Yu Gothic Light";
+}
+
+#date-label {
+    -fx-text-fill: white;
+    -fx-font-size: 24pt;
+    -fx-font-family: "Yu Gothic Light";
+}
+
+#widget-title-label {
+    -fx-text-fill: gray;
+    -fx-font-size: 14pt;
+    -fx-font-family: "Yu Gothic Light";
+}
+
+.base-widget {
+    -fx-background-color: transparent !important;
+}
+
+.widget {
+    -fx-background-radius: 20 !important;
+    -fx-border-radius: 0 !important;
+}
+
+.widget-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-content-display: top;
+}
+
+.widget-button:hover {
+    -fx-background-color: rgba(10, 10, 10, 0.8);
+}
+
+.widget-button:pressed {
+    -fx-background-color: rgba(0, 0, 0, 0.8);
+}
+
+.widget-label {
+    -fx-text-fill: white;
+    -fx-font-size: 14pt;
+    -fx-font-family: "Yu Gothic Light";
+}
+
+.widget-text-field {
+    -fx-background-radius: 20 !important;
+    -fx-border-radius: 4 0 0 4  !important;
+    -fx-border-color: rgba(51, 51, 51, 1.0);
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-min-height: 48.0;
+    -fx-pref-height: 48.0;
+    -fx-start-margin: 16.0;
+    -fx-end-margin: 16.0;
+}
+
+#widget-title-bar {
+    -fx-background-color: rgba(20, 20, 20, 0.95);
+    -fx-background-radius: 20 20 0 0 !important;
+    -fx-padding: 0 16 0 16;
+}
+
+#links-widget {
+    -fx-background-color: rgba(29, 29, 29, 0.8);
+}
+
+#forecast-widget {
+    -fx-background-color: rgba(29, 29, 29, 0.8);
+}
+
+#google-search-widget {
+    -fx-background-color: rgba(29, 29, 29, 0.8);
+}
+
+#google-search-button {
+    -fx-background-color: rgba(51, 51, 51, 1.0);
+    -fx-pref-width: 96.0;
+    -fx-pref-height: 48.0;
+    -fx-border-radius: 0 4 4 0  !important;
+}
+
+#task-manager-widget {
+    -fx-background-color: rgba(29, 29, 29, 0.8);
+}
+
+#task-manager-widget-cpu-label {
+    -fx-text-fill: #7122FA;
+}
+
+#task-manager-widget-memory-label {
+    -fx-text-fill: #13CA91;
+}
+
+.cpu-chart-series-area-line {
+    -fx-stroke: #7122FA;
+}
+
+.cpu-chart-series-area-fill {
+    -fx-fill: rgba(113, 34, 250, 0.3);
+}
+
+.memory-chart-series-area-line {
+    -fx-stroke: #13CA91;
+}
+
+.memory-chart-series-area-fill {
+    -fx-fill: rgba(19, 202, 145, 0.3);
+}
+
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.chart-vertical-grid-lines {
+    -fx-stroke: rgba(51, 51, 51, 1.0);
+}
+
+.chart-horizontal-grid-lines {
+    -fx-stroke: rgba(51, 51, 51, 1.0);
+}
+
+.chart-symbol {
+    -fx-background-color: transparent;
+}
