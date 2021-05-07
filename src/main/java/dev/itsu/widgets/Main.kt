@@ -6,11 +6,14 @@ import javafx.scene.layout.VBox
 import javafx.stage.Stage
 import javafx.stage.StageStyle
 import java.awt.GraphicsEnvironment
+import java.io.File
 
 @ExperimentalStdlibApi
 class Main : Application() {
 
     override fun start(primaryStage: Stage) {
+        createFiles()
+
         primaryStage.isResizable = false
         primaryStage.isAlwaysOnTop = false
         primaryStage.x = 0.0
@@ -39,6 +42,11 @@ class Main : Application() {
         primaryStage.toBack()
         primaryStage.show()
         secondaryStage.show()
+    }
+
+    private fun createFiles() {
+        File("settings").mkdirs()
+        File("extensions").mkdirs()
     }
 
 }

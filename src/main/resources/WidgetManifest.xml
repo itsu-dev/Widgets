@@ -1,0 +1,21 @@
+<manifest>
+    <PackageName>TestWidgets</PackageName>
+    <Version>1.0.0</Version>
+    <Author>Itsu</Author>
+    <Description>Test Widgets</Description>
+
+    <Widgets>
+        <Widget>
+            <WidgetName>Test1</WidgetName>
+            <MainClass>dev.itsu.test.Test1</MainClass>
+            <Title>TEST1</Title>
+            <IconPath>icon/test1.png</IconPath>
+        </Widget>
+        <Widget>
+            <WidgetName>Test2</WidgetName>
+            <MainClass>dev.itsu.test.Test2</MainClass>
+            <Title>TEST2</Title>
+            <IconPath>icon/test2.png</IconPath>
+        </Widget>
+    </Widgets>
+</manifest>
