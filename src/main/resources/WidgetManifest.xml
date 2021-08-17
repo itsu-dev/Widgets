@@ -1,4 +1,4 @@
-<manifest>
+<Manifest>
     <PackageName>TestWidgets</PackageName>
     <Version>1.0.0</Version>
     <Author>Itsu</Author>
@@ -18,4 +18,4 @@
             <IconPath>icon/test2.png</IconPath>
         </Widget>
     </Widgets>
-</manifest>
+</Manifest>

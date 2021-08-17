@@ -16,6 +16,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.redundent</groupId>
+            <artifactId>kotlin-xml-builder</artifactId>
+            <version>1.6.0</version>
+        </dependency>
+        <dependency>
             <groupId>jaxen</groupId>
             <artifactId>jaxen</artifactId>
             <version>1.1.6</version>
@@ -35,6 +40,11 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.8.6</version>
+        </dependency>
+        <dependency>
+            <artifactId>manaba4j</artifactId>
+            <groupId>dev.itsu</groupId>
+            <version>1.2-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlinx</groupId>

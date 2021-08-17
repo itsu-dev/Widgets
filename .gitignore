@@ -1,2 +1,5 @@
 # Project exclude paths
 /target/
+/src/main/resources/credentials.json
+.idea/
+Widgets.iml

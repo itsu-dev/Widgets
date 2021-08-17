@@ -2,6 +2,7 @@ package dev.itsu.widgets
 
 import javafx.application.Application
 import javafx.scene.Scene
+import javafx.scene.control.ScrollPane
 import javafx.scene.layout.VBox
 import javafx.stage.Stage
 import javafx.stage.StageStyle
@@ -33,7 +34,7 @@ class Main : Application() {
         secondaryStage.initStyle(StageStyle.TRANSPARENT)
         secondaryStage.initOwner(primaryStage)
 
-        val scene = Scene(VBox(), secondaryStage.width, secondaryStage.height)
+        val scene = Scene(ScrollPane(), secondaryStage.width, secondaryStage.height)
         secondaryStage.scene = scene
 
         UIManager.create(scene)

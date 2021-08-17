@@ -2,13 +2,13 @@ package dev.itsu.widgets
 
 import dev.itsu.widgets.ui.googlesearch.GoogleSearchWidget
 import dev.itsu.widgets.ui.links.LinksWidget
+import dev.itsu.widgets.ui.manaba.ManabaAssignmentsWidget
 import dev.itsu.widgets.ui.taskmanager.TaskManagerWidget
 import javafx.application.Platform
 import javafx.geometry.Insets
 import javafx.scene.Scene
-import javafx.scene.control.ContextMenu
-import javafx.scene.control.Label
-import javafx.scene.control.MenuItem
+import javafx.scene.control.*
+import javafx.scene.input.ScrollEvent
 import javafx.scene.layout.VBox
 import javafx.scene.paint.Color
 import kotlinx.coroutines.GlobalScope
@@ -22,6 +22,7 @@ object UIManager {
 
     private lateinit var scene: Scene
     private lateinit var baseVBox: VBox
+    private lateinit var scrollPane: ScrollPane
     private val clockLabel = Label("00:00")
     private val dateLabel = Label("0000年00月00日　-曜日")
 
@@ -39,9 +40,26 @@ object UIManager {
         this.scene.stylesheets.add(Main::class.java.classLoader.getResource("core.css")?.toString())
         this.scene.fill = Color.TRANSPARENT
 
-        this.baseVBox = this.scene.root as VBox
-        this.baseVBox.padding = Insets(Environment.padding, Environment.padding, Environment.padding, Environment.padding)
+        this.baseVBox = VBox()
+        this.baseVBox.padding =
+            Insets(Environment.padding, Environment.padding, Environment.padding, Environment.padding)
         this.baseVBox.spacing = 16.0
+
+        this.scrollPane = this.scene.root as ScrollPane
+        this.scrollPane.content = baseVBox
+        /*
+        (this.scrollPane.lookup(".scroll-bar:vertical") as ScrollBar).also {
+            it.unitIncrement = it.unitIncrement * 3
+        }
+
+         */
+        this.scrollPane.hbarPolicy = ScrollPane.ScrollBarPolicy.NEVER
+        this.scrollPane.vbarPolicy = ScrollPane.ScrollBarPolicy.AS_NEEDED
+        this.scrollPane
+        this.scrollPane.id = "base-scroll-pane"
+        this.scrollPane.addEventFilter(ScrollEvent.SCROLL) { e ->
+            if (e.deltaX != 0.0) e.consume()
+        }
 
         baseVBox.id = "base-vbox"
         clockLabel.id = "clock-label"
@@ -51,37 +69,36 @@ object UIManager {
             VBox(clockLabel, dateLabel),
             LinksWidget(),
             TaskManagerWidget(),
+            ManabaAssignmentsWidget(),
             GoogleSearchWidget()
-            // ForecastWidget()
         )
     }
 
-    fun startClock() {
-        GlobalScope.launch {
-            while (true) {
-                val c = Calendar.getInstance()
-                if (hour != c.get(Calendar.HOUR_OF_DAY)
-                    || minute != c.get(Calendar.HOUR_OF_DAY)
-                    || hour != c.get(Calendar.HOUR_OF_DAY)
-                    || minute != c.get(Calendar.MINUTE)
-                    || year != c.get(Calendar.YEAR)
-                    || month != c.get(Calendar.MONTH)
-                    || day != c.get(Calendar.DAY_OF_MONTH)
-                    || week != c.get(Calendar.DAY_OF_WEEK)) {
+    fun startClock() = GlobalScope.launch {
+        while (true) {
+            val c = Calendar.getInstance()
+            if (hour != c.get(Calendar.HOUR_OF_DAY)
+                || minute != c.get(Calendar.HOUR_OF_DAY)
+                || hour != c.get(Calendar.HOUR_OF_DAY)
+                || minute != c.get(Calendar.MINUTE)
+                || year != c.get(Calendar.YEAR)
+                || month != c.get(Calendar.MONTH)
+                || day != c.get(Calendar.DAY_OF_MONTH)
+                || week != c.get(Calendar.DAY_OF_WEEK)
+            ) {
 
-                    hour = c.get(Calendar.HOUR_OF_DAY)
-                    minute = c.get(Calendar.MINUTE)
-                    year = c.get(Calendar.YEAR)
-                    month = c.get(Calendar.MONTH)
-                    day = c.get(Calendar.DAY_OF_MONTH)
-                    week = c.get(Calendar.DAY_OF_WEEK)
-                    Platform.runLater {
-                        clockLabel.text = "$hour:${if (minute < 10) "0" else ""}$minute"
-                        dateLabel.text = "${year}年${month + 1}月${day}日　${weeks[week]}曜日"
-                    }
+                hour = c.get(Calendar.HOUR_OF_DAY)
+                minute = c.get(Calendar.MINUTE)
+                year = c.get(Calendar.YEAR)
+                month = c.get(Calendar.MONTH)
+                day = c.get(Calendar.DAY_OF_MONTH)
+                week = c.get(Calendar.DAY_OF_WEEK)
+                Platform.runLater {
+                    clockLabel.text = "$hour:${if (minute < 10) "0" else ""}$minute"
+                    dateLabel.text = "${year}年${month + 1}月${day}日　${weeks[week]}曜日"
                 }
-                delay(3000)
             }
+            delay(3000)
         }
     }
 
